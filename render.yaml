@@ -9,9 +9,9 @@ services:
     name: noir-backend
     env: node
     
-    # Render builds the project from the root. 
-    # We tell it to navigate into the server folder to run the backend.
-    rootDirectory: server
+    # Render builds the project from the repository root.
+    # The actual backend lives in the nested Noir/Noir v2/server folder.
+    rootDirectory: "Noir/Noir v2/server"
     buildCommand: npm install
     startCommand: npm start
     
