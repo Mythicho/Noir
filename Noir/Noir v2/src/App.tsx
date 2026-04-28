@@ -16,7 +16,7 @@ import {
   subscriptionsApi,
   seedDemoData,
 } from "./backend/db";
-import { authApi, type ApiUser } from "./backend/api";
+import { authApi, type ApiUser, getStoredToken, API_URL } from "./backend/api";
 import AuthPage from "./pages/AuthPage";
 import AdminPage from "./pages/AdminPage";
 import { OrderProgressBar } from "./pages/AdminPage";

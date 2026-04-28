@@ -5,7 +5,7 @@
  * Handles authentication tokens, error handling, and rate limiting.
  */
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+export const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
 const TOKEN_KEY = "noir-session-token";
 const RATE_LIMIT_DELAY = 300; // ms between requests
 let lastRequestTime = 0;

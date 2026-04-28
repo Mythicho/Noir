@@ -1,0 +1,8 @@
+{
+  "buildCommand": "cd 'Noir/Noir v2' && npm run build",
+  "outputDirectory": "Noir/Noir v2/dist",
+  "framework": "vite",
+  "env": {
+    "VITE_API_URL": "@vite-api-url"
+  }
+}
