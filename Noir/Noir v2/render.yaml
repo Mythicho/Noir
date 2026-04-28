@@ -1,0 +1,49 @@
+# NOIR CLOUD DEPLOYMENT BLUEPRINT (RENDER.COM)
+# 
+# This file automates Step 2. When you push your repository to GitHub 
+# and link it to Render, Render will read this file and instantly 
+# spin up your secure Node backend, create a database disk, and generate keys.
+
+services:
+  - type: web
+    name: noir-backend
+    env: node
+    
+    # Render builds the project from the root. 
+    # We tell it to navigate into the server folder to run the backend.
+    rootDirectory: server
+    buildCommand: npm install
+    startCommand: npm start
+    
+    # Health check ensures zero-downtime deploys
+    healthCheckPath: /api/products
+    
+    # Environment variables for the production server
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      
+      # Tell the server to save the SQLite database on the persistent disk
+      - key: PERSISTENT_DISK_PATH
+        value: /data
+        
+      # Render will automatically generate a highly secure random string for user sessions!
+      - key: JWT_SECRET
+        generateValue: true
+        
+      # You will paste these keys from your Razorpay Dashboard into the Render interface
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: WEBHOOK_SECRET
+        sync: false
+
+    # Provision an SSD Persistent Disk so customer data, orders, and passwords 
+    # are permanently saved and never get wiped when the server restarts.
+    disk:
+      name: noir-sqlite-disk
+      mountPath: /data
+      sizeGB: 1
