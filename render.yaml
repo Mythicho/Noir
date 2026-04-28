@@ -33,8 +33,10 @@ services:
       - key: JWT_SECRET
         generateValue: true
         
-      # You will paste these two keys from your Stripe Dashboard into the Render interface
-      - key: STRIPE_SECRET_KEY
+      # You will paste these keys from your Razorpay Dashboard into the Render interface
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
         sync: false
       - key: WEBHOOK_SECRET
         sync: false
